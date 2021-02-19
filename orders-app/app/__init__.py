@@ -16,6 +16,9 @@ def create_app(config='config.ProductionConfig'):
     db.init_app(app)
     migrate.init_app(app, db)
 
+    from app.auth import auth
+    app.register_blueprint(auth)
+
     from app.customers import customers
     app.register_blueprint(customers, url_prefix='/customers')
 
