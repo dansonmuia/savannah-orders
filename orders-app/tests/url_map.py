@@ -2,3 +2,4 @@
 
 
 LOGIN = '/login'
+SIGNUP = '/customers'
