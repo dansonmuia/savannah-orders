@@ -29,3 +29,10 @@ def list_orders():
     orders_query = m.get_orders_query(g.user)
 
     return pagination.jsonify_pagination(pagination.paginate(orders_query))
+
+
+@orders.route('/<order_id>', methods=['GET'])
+@decs.require_login
+def get_order_detail(order_id):
+    order = m.get_orders_query(g.user).filter_by(id=order_id).first_or_404()
+    return http.http_200(order.to_json())
