@@ -1,5 +1,5 @@
 from flask import Blueprint
 
-customers = Blueprint('customers', __name__)
+orders = Blueprint('orders', __name__)
 
 from . import models, views

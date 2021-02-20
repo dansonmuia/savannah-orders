@@ -22,4 +22,7 @@ def create_app(config='config.ProductionConfig'):
     from app.customers import customers
     app.register_blueprint(customers, url_prefix='/customers')
 
+    from app.orders import orders
+    app.register_blueprint(orders, url_prefix='/orders')
+
     return app
