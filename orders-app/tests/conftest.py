@@ -1,8 +1,11 @@
+import random
+
 import pytest
 from faker import Faker
 
 from app import create_app, db
 from app.customers.models import Customer
+from app.orders.models import Order
 
 
 @pytest.fixture(scope='session')
@@ -58,3 +61,18 @@ def customer_with_password(customer_data):
 def customer(customer_with_password):
     _customer, password = customer_with_password
     return _customer
+
+
+@pytest.fixture()
+def order_data():
+    return {
+        'item': faker.name(),
+        'amount': random.randint(1, 999999)
+    }
+
+
+@pytest.fixture()
+def order(order_data, customer):
+    _order = Order(**order_data, customer=customer)
+    _order.save()
+    return _order

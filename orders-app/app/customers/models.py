@@ -15,6 +15,7 @@ class Customer(db.Model, DbSessionModel):
     phone = db.Column(db.String(16), nullable=True)
     date_joined = db.Column(db.DateTime(), default=datetime.utcnow)
     password_hash = db.Column(db.String(300))
+    orders = db.relationship('Order', backref='customer', lazy='dynamic')
 
     @property
     def password(self):
