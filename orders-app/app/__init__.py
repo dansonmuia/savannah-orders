@@ -25,4 +25,7 @@ def create_app(config='config.ProductionConfig'):
     from app.orders import orders
     app.register_blueprint(orders, url_prefix='/orders')
 
+    from app.http_error_handlers import error_handlers
+    app.register_blueprint(error_handlers)
+
     return app
