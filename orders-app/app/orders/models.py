@@ -21,3 +21,10 @@ class Order(db.Model, DbSessionModel):
             'amount': self.amount,
             'time_placed': self.time_placed.strftime('%y-%m-%d')
         }
+
+
+def get_orders_query(customer=None):
+    query = Order.query
+    if customer:
+        query = query.filter_by(customer=customer)
+    return query
