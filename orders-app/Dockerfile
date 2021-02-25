@@ -8,8 +8,11 @@ COPY . ./
 
 RUN pip install -r requirements/requirements.txt
 
-RUN flask db upgrade
+ENV SECRET_KEY=${SECRET_KEY}
 
-ENV FLASK_ENV=development
+ENV POSTGRES_DB=${POSTGRES_DB}
+ENV POSTGRES_USER=${POSTGRES_USER}
+ENV POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
-CMD flask run --host=0.0.0.0
+
+CMD flask fly-init-db && flask db upgrade && flask run --host=0.0.0.0

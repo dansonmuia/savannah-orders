@@ -1,7 +1,19 @@
 version: "3.7"
 services:
+  pgdb:
+    image: postgres:9.6.21-alpine
+    container_name: pg_db
+    restart: always
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+
   orders_app:
     build: './orders-app'
+    container_name: orders_app
     environment:
       - REDIS_URL=redis
       - REDIS_PORT=6379
@@ -10,10 +22,11 @@ services:
       - "5000:5000"
     depends_on:
       - redis
+      - pgdb
 
   comms_worker:
     build: './comms-worker'
-    user: nobody
+    container_name: comms_worker
     environment:
       - AT_API_KEY=${AT_API_KEY}
       - AT_USERNAME=${AT_USERNAME}
@@ -23,5 +36,8 @@ services:
 
   redis:
     image: 'redis:4-alpine'
+    container_name: redis
     ports:
       - '6379:6379'
+volumes:
+  pgdata:
