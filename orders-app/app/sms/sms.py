@@ -1,3 +1,5 @@
+from flask import current_app
+
 from celery import Celery
 
 
@@ -12,3 +14,4 @@ def send_confirm_order_sms(order):
     }
 
     celery_app.send_task('tasks.send_message', kwargs=kwargs)
+    current_app.logger.info('Send msg to queue')
