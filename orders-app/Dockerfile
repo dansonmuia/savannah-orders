@@ -8,8 +8,5 @@ COPY . ./
 
 RUN pip install -r requirements/requirements.txt
 
-RUN flask db upgrade
 
-ENV FLASK_ENV=development
-
-CMD flask run --host=0.0.0.0
+CMD flask fly-init-db && flask db upgrade && flask run --host=0.0.0.0

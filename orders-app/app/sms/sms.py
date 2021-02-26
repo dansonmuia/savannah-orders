@@ -13,5 +13,9 @@ def send_confirm_order_sms(order):
         'phone': order.customer.phone
     }
 
-    celery_app.send_task('tasks.send_message', kwargs=kwargs)
+    if current_app.testing:
+        print('TESTING mode: will not send sms')
+    else:
+        celery_app.send_task('tasks.send_message', kwargs=kwargs)
+
     current_app.logger.info('Send msg to queue')
