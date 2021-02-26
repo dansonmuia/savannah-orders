@@ -3,9 +3,9 @@ import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-POSTGRES_DB = os.environ['POSTGRES_DB']
-POSTGRES_USER = os.environ['POSTGRES_USER']
-POSTGRES_PASSWORD = os.environ['POSTGRES_PASSWORD']
+POSTGRES_DB = os.environ.get('POSTGRES_DB')
+POSTGRES_USER = os.environ.get('POSTGRES_USER')
+POSTGRES_PASSWORD = os.environ.get('POSTGRES_PASSWORD')
 
 
 class Config:
@@ -15,7 +15,7 @@ class Config:
 
 
 class ProductionConfig(Config):
-    SECRET_KEY = os.environ['SECRET_KEY']
+    SECRET_KEY = os.environ.get('SECRET_KEY')
     SQLALCHEMY_DATABASE_URI = f'postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@pgdb:5432/{POSTGRES_DB}'
 
 
