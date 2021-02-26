@@ -21,7 +21,7 @@ def fly_init_db():
     url = app.config['SQLALCHEMY_DATABASE_URI']
 
     engine = create_engine(url, echo=True)
-
+    print('Checking db')
     if not database_exists(engine.url):
         create_database(engine.url)
         print('Database not found. Created a new one')
