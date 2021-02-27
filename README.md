@@ -87,7 +87,7 @@ And the response should look like:
 To access the application's services such as creating orders, a request needs to be authorised. Here's how to get authorisation token:
 `POST` a request to `/login` url, with `email` and `pass` in json data:
 
-![Architecture illustration](https://github.com/dansonmuia/savannah-orders/blob/readme/illustrations/login_request.png)
+![Login data](https://github.com/dansonmuia/savannah-orders/blob/readme/illustrations/login_request.png)
 
 If you've provided the right values, a you'll receive a response containing the access token:
 
@@ -103,7 +103,7 @@ The token will expire after some time, in which case you can generate a new one 
 You can get your details using your signup email. This requires authorization, so have the `Authorization` header set properly.
 Send a `GET` request to `/customers/<your_email>`. Youll get a response with your account details.
 
-![Customer details](https://github.com/dansonmuia/savannah-orders/blob/readme/illustrations/view_customer_response.png)
+![Customer details](https://github.com/dansonmuia/savannah-orders/blob/readme/illustrations/view_customer.png)
 
 #### How to place an order
 To place an order, send a `POST` request to `/orders`. This request authorization so that the order can be associated with your account.
@@ -117,12 +117,12 @@ On successful creation, the orders details will be sent back in rthe response:
 #### How to view an order
 To view the details of the order you've just created, sent a `GET` request with the order id to `/orders/<order_id>`. This request needs the `Authorization` header. The details in the response will resemble:
 
-![View order](https://github.com/dansonmuia/savannah-orders/blob/readme/illustrations/architecture.png)
+![View order](https://github.com/dansonmuia/savannah-orders/blob/readme/illustrations/view_order_response.png)
 
 #### How to list all your orders
 You may place multiple orders. To view all the orders you've created, send a `GET` request to `/orders`, and a list of the same will be sent back:
 
-![Order list](https://github.com/dansonmuia/savannah-orders/blob/readme/illustrations/order_list_response.png)
+![Order list](https://github.com/dansonmuia/savannah-orders/blob/readme/illustrations/list_orders_response.png)
 
 #### All done
 Once you've placed your orders, you may sit back and relax, and the good people of earth will process your requests. Maybe.
