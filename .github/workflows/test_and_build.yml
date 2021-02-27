@@ -34,5 +34,5 @@ jobs:
 
       - name: Publish image
         run: |
-          docker push dansonio/savannah-orders_orders_app
-          docker push dansonio/savannah-orders_comms_worker
+          docker push savannah-orders_orders_app
+          docker push savannah-orders_comms_worker
