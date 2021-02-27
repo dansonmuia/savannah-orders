@@ -13,6 +13,7 @@ services:
 
   orders_app:
     build: './orders-app'
+    image: 'dansonio/orders_app'
     container_name: orders_app
     environment:
       - REDIS_URL=redis
@@ -29,6 +30,7 @@ services:
 
   comms_worker:
     build: './comms-worker'
+    image: 'dansonio/comms_worker'
     container_name: comms_worker
     environment:
       - AT_API_KEY=${AT_API_KEY}
