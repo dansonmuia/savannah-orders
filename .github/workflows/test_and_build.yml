@@ -12,6 +12,9 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Build the services
+        run: docker-compose build
+
+      - name: Run tests
         env:
           AT_API_KEY : ${{secrets.AT_API_KEY}}
           AT_USERNAME : ${{secrets.AT_USERNAME}}
@@ -19,9 +22,7 @@ jobs:
           POSTGRES_DB : ${{secrets.POSTGRES_DB}}
           POSTGRES_USER : ${{secrets.POSTGRES_USER}}
           POSTGRES_PASSWORD : ${{secrets.POSTGRES_PASSWORD}}
-        run: docker-compose build
 
-      - name: Run tests
         run: docker-compose run orders_app pytest
 
       - name: Login to Docker Hub
