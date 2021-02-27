@@ -15,6 +15,7 @@ jobs:
         run: |
           export AT_API_KEY=${{secrets.AT_API_KEY}}
           export AT_USERNAME=${{secrets.AT_USERNAME}}
+          echo $AT_USERNAME
           export SECRET_KEY=${{secrets.SECRET_KEY}}
           export POSTGRES_DB=${{secrets.POSTGRES_DB}}
           export POSTGRES_USER=${{secrets.POSTGRES_USER}}
