@@ -12,7 +12,15 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Build the services
-        run: docker-compose up -d
+        run: |
+        export AT_API_KEY=${{secrets.AT_API_KEY}}
+        export AT_USERNAME=${{secrets.AT_USERNAME}}
+        export SECRET_KEY=${{secrets.SECRET_KEY}}
+        export POSTGRES_DB=${{secrets.POSTGRES_DB}}
+        export POSTGRES_USER=${{secrets.POSTGRES_USER}}
+        export POSTGRES_PASSWORD=${{secrets.POSTGRES_PASSWORD}}
+
+        docker-compose build
 
       - name: Run tests
         run: docker-compose run savannah-orders_orders_app pytest
