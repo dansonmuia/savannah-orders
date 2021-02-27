@@ -1,9 +1,18 @@
-name: Docker Compose Actions Workflow
-on: push
+name: Build, test and publish images
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build the stack
+      
+      - name: Build the services
         run: docker-compose up -d
+
+      - name: Run tests
+        run: docker-compose run savannah-orders_orders_app pytest
