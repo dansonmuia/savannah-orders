@@ -23,7 +23,7 @@ jobs:
           POSTGRES_USER : ${{secrets.POSTGRES_USER}}
           POSTGRES_PASSWORD : ${{secrets.POSTGRES_PASSWORD}}
 
-        run: docker-compose run dansonio/orders_app pytest
+        run: docker-compose run orders_app pytest
 
       - name: Login to Docker Hub
         env:
