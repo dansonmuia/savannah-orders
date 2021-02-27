@@ -1,4 +1,8 @@
-badges
+[![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
+
+-build
+-coverage
+
 # savannah-orders
 Savannah Customer Orders App. Running on https://savannah.danson.xyz
 
@@ -68,7 +72,7 @@ The API endpoints for the aplication are as follows:
 |`/orders/<order_id>`   | GET    | Yes          | View order    | 200           |
 
 
-### Howto:
+## Howto:
 Let's see how to interact with the application that you are running locally through docker-compose, or accessing online at https://savannah.danson.xyz
 In all requests, set the `ContentType` header to `Application/json` beacuse we will be sending all data in json format. In addition, the endpoints that need authorisation require the `Authorization` header to be set as well, as we will see in the 'How to login' subsection.
 
