@@ -5,7 +5,6 @@ services:
 
 before_install:
   - docker-compose build
-  - docker-compose run orders_app pytest
 
 script:
-  - pytest
+  - docker-compose run orders_app pytest
