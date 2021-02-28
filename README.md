@@ -1,7 +1,6 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/5f4a732a5ce721049edc/maintainability)](https://codeclimate.com/github/dansonmuia/savannah-orders/maintainability)
-[![Build, test and publish images](https://github.com/dansonmuia/savannah-orders/actions/workflows/test_and_build.yml/badge.svg)](https://github.com/dansonmuia/savannah-orders/actions/workflows/test_and_build.yml)
+[![Build, test and publish images][![Build Status](https://travis-ci.com/dansonmuia/savannah-orders.svg?branch=main)](https://travis-ci.com/dansonmuia/savannah-orders)
 
--coverage
 
 # savannah-orders
 Savannah Customer Orders App. Running on https://savannah.danson.xyz
@@ -54,7 +53,7 @@ To run the application's unit tests inside a container, run the following comman
 
 ### Architecture
 This is a service based application. For the instance running on `savannah.danson.xyz`, The main application sits behind an nginx proxy server. There is an sms sending worker, which gets messages to send from the main application through a redis queue:
-![Architecture illustration](https://github.com/dansonmuia/savannah-orders/blob/readme/illustrations/architecture.png)
+![Architecture illustration](https://github.com/dansonmuia/savannah-orders/blob/main/illustrations/architecture.png)
 
 
 ### API Endpoints
@@ -80,26 +79,26 @@ In all requests, set the `ContentType` header to `Application/json` beacuse we w
 To create an account, you need to post: `full_name`, `email`, `phone`, and `password`. Method is `POST`, sent to endpoint `/customers`.
 A request would look like:
 
-![Sign up request](https://github.com/dansonmuia/savannah-orders/blob/readme/illustrations/signup_request.png)
+![Sign up request](https://github.com/dansonmuia/savannah-orders/blob/main/illustrations/signup_request.png)
 
 And the response should look like:
 
-![Sign up response](https://github.com/dansonmuia/savannah-orders/blob/readme/illustrations/signup_response.png)
+![Sign up response](https://github.com/dansonmuia/savannah-orders/blob/main/illustrations/signup_response.png)
 
 
 #### How to Login
 To access the application's services such as creating orders, a request needs to be authorised. Here's how to get authorisation token:
 `POST` a request to `/login` url, with `email` and `pass` in json data:
 
-![Login data](https://github.com/dansonmuia/savannah-orders/blob/readme/illustrations/login_request.png)
+![Login data](https://github.com/dansonmuia/savannah-orders/blob/main/illustrations/login_request.png)
 
 If you've provided the right values, a you'll receive a response containing the access token:
 
-![Login response](https://github.com/dansonmuia/savannah-orders/blob/readme/illustrations/login_response.png)
+![Login response](https://github.com/dansonmuia/savannah-orders/blob/main/illustrations/login_response.png)
 
 In subsequent requests, put the token in the `Authorization` header as follows:
 
-![Headers](https://github.com/dansonmuia/savannah-orders/blob/readme/illustrations/headers.png)
+![Headers](https://github.com/dansonmuia/savannah-orders/blob/main/illustrations/headers.png)
 
 The token will expire after some time, in which case you can generate a new one as described above.
 
@@ -107,26 +106,26 @@ The token will expire after some time, in which case you can generate a new one 
 You can get your details using your signup email. This requires authorization, so have the `Authorization` header set properly.
 Send a `GET` request to `/customers/<your_email>`. Youll get a response with your account details.
 
-![Customer details](https://github.com/dansonmuia/savannah-orders/blob/readme/illustrations/view_customer.png)
+![Customer details](https://github.com/dansonmuia/savannah-orders/blob/main/illustrations/view_customer.png)
 
 #### How to place an order
 To place an order, send a `POST` request to `/orders`. This request authorization so that the order can be associated with your account.
 
-![Order data](https://github.com/dansonmuia/savannah-orders/blob/readme/illustrations/create_order_request.png)
+![Order data](https://github.com/dansonmuia/savannah-orders/blob/main/illustrations/create_order_request.png)
 
 On successful creation, the orders details will be sent back in rthe response:
 
-![Order details](https://github.com/dansonmuia/savannah-orders/blob/readme/illustrations/create_order_response.png)
+![Order details](https://github.com/dansonmuia/savannah-orders/blob/main/illustrations/create_order_response.png)
 
 #### How to view an order
 To view the details of the order you've just created, sent a `GET` request with the order id to `/orders/<order_id>`. This request needs the `Authorization` header. The details in the response will resemble:
 
-![View order](https://github.com/dansonmuia/savannah-orders/blob/readme/illustrations/view_order_response.png)
+![View order](https://github.com/dansonmuia/savannah-orders/blob/main/illustrations/view_order_response.png)
 
 #### How to list all your orders
 You may place multiple orders. To view all the orders you've created, send a `GET` request to `/orders`, and a list of the same will be sent back:
 
-![Order list](https://github.com/dansonmuia/savannah-orders/blob/readme/illustrations/list_orders_response.png)
+![Order list](https://github.com/dansonmuia/savannah-orders/blob/main/illustrations/list_orders_response.png)
 
 #### All done
 Once you've placed your orders, you may sit back and relax, and the good people of earth will process your requests. Maybe.
