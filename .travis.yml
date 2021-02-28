@@ -1,0 +1,16 @@
+language: python
+
+services:
+  - docker
+
+before_install:
+  - docker-compose build
+
+script:
+  - docker-compose run orders_app pytest
+
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: main
