@@ -8,3 +8,9 @@ before_install:
 
 script:
   - docker-compose run orders_app pytest
+
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: main
