@@ -1,5 +1,5 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/5f4a732a5ce721049edc/maintainability)](https://codeclimate.com/github/dansonmuia/savannah-orders/maintainability)
-[![Build, test and publish images][![Build Status](https://travis-ci.com/dansonmuia/savannah-orders.svg?branch=main)](https://travis-ci.com/dansonmuia/savannah-orders)
+[![Build Status](https://travis-ci.com/dansonmuia/savannah-orders.svg?branch=main)](https://travis-ci.com/dansonmuia/savannah-orders)
 
 
 # savannah-orders
