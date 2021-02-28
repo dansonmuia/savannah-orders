@@ -1,5 +1,4 @@
-[![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/5f4a732a5ce721049edc/maintainability)](https://codeclimate.com/github/dansonmuia/savannah-orders/maintainability)
 [![Build, test and publish images](https://github.com/dansonmuia/savannah-orders/actions/workflows/test_and_build.yml/badge.svg)](https://github.com/dansonmuia/savannah-orders/actions/workflows/test_and_build.yml)
 
 -coverage
