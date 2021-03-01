@@ -1,0 +1,53 @@
+version: "3.7"
+services:
+  pgdb:
+    image: postgres:9.6.21-alpine
+    container_name: pg_db
+    restart: always
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+
+  orders_app:
+    image: 'dansonio/orders_app'
+    container_name: orders_app
+    environment:
+      - REDIS_URL=redis
+      - REDIS_PORT=6379
+      - SECRET_KEY=${SECRET_KEY}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "5000:5000"
+    depends_on:
+      - redis
+      - pgdb
+
+  comms_worker:
+    image: 'dansonio/comms_worker'
+    container_name: comms_worker
+    environment:
+      - AT_API_KEY=${AT_API_KEY}
+      - AT_USERNAME=${AT_USERNAME}
+    depends_on:
+      - redis
+      - orders_app
+
+  redis:
+    image: 'redis:4-alpine'
+    container_name: redis
+    ports:
+      - '6379:6379'
+
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30
+
+volumes:
+  pgdata:
