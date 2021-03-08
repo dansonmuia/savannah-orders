@@ -10,7 +10,7 @@ install:
   - pip install -r orders-app/requirements/requirements.txt
 
 script:
-  - coverage run -m pytest --source app
+  - coverage run --source app -m pytest
   - docker-compose run orders_app pytest
 
 deploy:
