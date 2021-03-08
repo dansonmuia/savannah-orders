@@ -1,3 +1,7 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=427968b7f1ad9ec276d1c8859a7f81037bb8357848c9043d65473bda6bd3f81c
+
 language: python
 
 services:
@@ -6,8 +10,21 @@ services:
 before_install:
   - docker-compose build
 
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+install:
+  - pip install -r orders-app/requirements/requirements.txt
+
 script:
+  - coverage run --source app -m pytest
   - docker-compose run orders_app pytest
+
+after_script:
+  - coverage xml
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 deploy:
   provider: script
