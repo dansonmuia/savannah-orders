@@ -1,5 +1,6 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/5f4a732a5ce721049edc/maintainability)](https://codeclimate.com/github/dansonmuia/savannah-orders/maintainability)
 [![Build Status](https://travis-ci.com/dansonmuia/savannah-orders.svg?branch=main)](https://travis-ci.com/dansonmuia/savannah-orders)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/5f4a732a5ce721049edc/test_coverage)](https://codeclimate.com/github/dansonmuia/savannah-orders/test_coverage)
 
 
 # savannah-orders
