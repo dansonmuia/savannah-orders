@@ -4,7 +4,7 @@
 
 
 # savannah-orders
-A simple customer orders API, written using python, flask, with docker, celery and redis
+A simple micro-service based customer orders API, written using python, flask, with docker, celery and redis
 
 ### Running locally
 #### Setup
