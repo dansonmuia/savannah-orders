@@ -4,7 +4,7 @@
 
 
 # savannah-orders
-Savannah Customer Orders App. Running on https://savannah.danson.xyz
+A simple customer orders API, written using python, flask, with docker, celery and redis
 
 ### Running locally
 #### Setup
